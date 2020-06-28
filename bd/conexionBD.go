@@ -3,14 +3,21 @@ package bd
 import (
 	"context"
 	"log"
+	"os"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+var dbName = os.Getenv("dbNametw")
+var userDb = os.Getenv("userDbtw")
+var passDb = os.Getenv("passDbtw")
+
+var url = "mongodb+srv://" + userDb + ":" + passDb + "@cluster0-utqfa.mongodb.net/" + dbName + "?retryWrites=true&w=majority"
+
 /*MongoCN es el objeto de conexion ala base de datos*/
 var MongoCN = ConectarBD()
-var clientOptions = options.Client().ApplyURI("mongodb+srv://adminDbtw007:twT0ny17612020@cluster0-utqfa.mongodb.net/<dbname>?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI(url)
 
 /*ConectarBD es la funcion que conecta la base de datos*/
 func ConectarBD() *mongo.Client {
