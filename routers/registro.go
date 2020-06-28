@@ -14,7 +14,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 	var t models.Usuario
 	err := json.NewDecoder(r.Body).Decode(&t)
 	if err != nil {
-		http.Error(w, "Error en los datos recibidos"+err.Error(), 400)
+		http.Error(w, "Error en los datos recibidos"+err.Error()+"tony", 400)
 		return
 	}
 
@@ -30,7 +30,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 
 	_, usuarioExistente, _ := bd.ChequeoYaExisteUsuario(t.Email)
 	if usuarioExistente == true {
-		http.Error(w, "Debe especificar una contraseña de al menos 6 caracteres", 400)
+		http.Error(w, "El usuario ya existe en la base de datos", 400)
 		return
 	}
 
