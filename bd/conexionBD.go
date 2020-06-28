@@ -9,9 +9,9 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var dbName = os.Getenv("dbNametw")
-var userDb = os.Getenv("userDbtw")
-var passDb = os.Getenv("passDbtw")
+var dbName = os.Getenv("DB_NAME_TW")
+var userDb = os.Getenv("USER_DB_TW")
+var passDb = os.Getenv("PASS_DB_TW")
 
 var url = "mongodb+srv://" + userDb + ":" + passDb + "@cluster0-utqfa.mongodb.net/" + dbName + "?retryWrites=true&w=majority"
 
